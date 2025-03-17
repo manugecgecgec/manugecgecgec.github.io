@@ -17,10 +17,11 @@
             background: #fff; /* Default background color */
             transition: background-color 0.15s ease; /* Smooth background transition */
         }
-        .container {
-            position: relative;
+        a {
+            display: block;
             width: 100%;
             height: 100%;
+            position: relative;
         }
         img {
             width: 100%;
@@ -28,63 +29,41 @@
             object-fit: contain; /* Keeps aspect ratio, fits within viewport */
             transition: opacity 0.2s ease; /* Smooth image transition */
         }
+        /* Default image */
         .default-img {
             position: absolute;
             top: 0;
             left: 0;
         }
+        /* Hover image - hidden by default */
         .hover-img {
             position: absolute;
             top: 0;
             left: 0;
             opacity: 0;
         }
-        /* For debugging: make area visible on hover */
-        area:hover {
-            cursor: pointer; /* Shows it’s interactive */
+        /* Show hover image and hide default on hover */
+        a:hover .default-img {
+            opacity: 0;
+        }
+        a:hover .hover-img {
+            opacity: 1;
+        }
+        /* Change background color on hover */
+        a:hover ~ body,
+        body:hover {
+            background-color: #f26100; /* Change to your desired hover color */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="https://soundcloud.com/ibizateahouse/todo-de-blanco">
-            <img src="https://raw.githubusercontent.com/manugecgecgec/manugecgecgec.github.io/refs/heads/main/joints%20from%202023%20-%202025%20orange%20text.png" 
-                 alt="Click to listen to Todo de Blanco" 
-                 class="default-img" 
-                 usemap="#text-map" 
-                 id="defaultImg">
-            <img src="https://raw.githubusercontent.com/manugecgecgec/manugecgecgec.github.io/refs/heads/main/joints%20from%202023%20-%202025%20white%20text.png" 
-                 alt="Hover image" 
-                 class="hover-img" 
-                 id="hoverImg">
-            <map name="text-map">
-                <area shape="rect" coords="2826,2769,1841,1932" href="#" alt="Text area" id="hoverArea">
-            </map>
-        </a>
-    </div>
-
-    <script>
-        const hoverArea = document.getElementById('hoverArea');
-        const defaultImg = document.getElementById('defaultImg');
-        const hoverImg = document.getElementById('hoverImg');
-        const body = document.body;
-
-        hoverArea.addEventListener('mouseover', () => {
-            defaultImg.style.opacity = '0';
-            hoverImg.style.opacity = '1';
-            body.style.backgroundColor = '#f26100';
-        });
-
-        hoverArea.addEventListener('mouseout', () => {
-            defaultImg.style.opacity = '1';
-            hoverImg.style.opacity = '0';
-            body.style.backgroundColor = '#fff';
-        });
-
-        // Prevent the area click from interfering with the link
-        hoverArea.addEventListener('click', (e) => {
-            e.preventDefault();
-        });
-    </script>
+    <a href="https://soundcloud.com/ibizateahouse/todo-de-blanco">
+        <img src="https://raw.githubusercontent.com/manugecgecgec/manugecgecgec.github.io/refs/heads/main/joints%20from%202023%20-%202025%20orange%20text.png" 
+             alt="Click to listen to Todo de Blanco" 
+             class="default-img">
+        <img src="https://raw.githubusercontent.com/manugecgecgec/manugecgecgec.github.io/refs/heads/main/joints%20from%202023%20-%202025%20white%20text.png" 
+             alt="Hover image" 
+             class="hover-img">
+    </a>
 </body>
 </html>
