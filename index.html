@@ -3,18 +3,28 @@
 <head>
     <title>Joints from 2023-2025</title>
     <style>
-        body {
+        html, body {
             margin: 0;
             padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevents scrolling */
+        }
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: #fff; /* Changed to white */
+            background: #fff;
+        }
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
         img {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Keeps aspect ratio, fits within viewport */
         }
     </style>
 </head>
